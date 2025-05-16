@@ -1,0 +1,19 @@
+
+EnvironmentNameNotFound: Could not find conda environment: lp
+You can list all discoverable environments with `conda info --envs`.
+
+
+Running optimization stage...
+Best Trial:
+Value: 1023.2454833984375
+Best Parameters:
+num_hidden_layers: 2
+hidden_size_layer_0: 57
+hidden_size_layer_1: 53
+learning_rate: 0.022782734973753344
+Optimization stage complete. Running training stage now...
+Training stage complete. Running evaluation stage now...
+Test MSE: 1001.1431274414062
+Test MAE: 23.809478759765625
+Test R-squared: -0.8099636931843568
+Pipeline successfully completed!

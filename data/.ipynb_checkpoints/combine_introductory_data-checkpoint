@@ -1,0 +1,30 @@
+import pandas as pd
+import os
+
+def combine_introductory_data():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    patients_file = os.path.join(script_dir, "patients.csv")
+    admissions_file = os.path.join(script_dir, "admissions.csv")
+    diagnoses_file = os.path.join(script_dir, "diagnoses_icd.csv")
+
+    print("loading patients data...")
+    patients = pd.read_csv(patients_file, usecols=["subject_id", "gender", "anchor_age", "anchor_year"])
+    print("loading admissions data...")
+    admissions = pd.read_csv(admissions_file, usecols=["subject_id", "admission_type", "admission_location"])
+    print("loading diagnoses data...")
+    diagnoses = pd.read_csv(diagnoses_file, usecols=["subject_id", "seq_num", "icd_code"])
+    print("Filtering diagnoses data for seq_num = 1...")
+    diagnoses = diagnoses[diagnoses["seq_num"] == 1].drop(columns=["seq_num"])
+    
+
+    print("merging datasets...")
+    combined_data = patients.merge(admissions, on="subject_id", how="inner")
+    combined_data = combined_data.merge(diagnoses, on="subject_id", how="inner")
+    output_file = os.path.join(script_dir, "introductory_model_data.csv")
+    print(f"Saving combined dataset to {output_file}...")
+    combined_data.to_csv(output_file, index=False)
+    
+    print("Combined dataset created successfully!")
+
+if __name__ == "__main__":
+    combine_introductory_data()

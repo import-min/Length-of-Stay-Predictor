@@ -1,0 +1,28 @@
+# conda environments:
+#
+base                  *  /home/drr8cp/miniconda3
+lp                       /home/drr8cp/miniconda3/envs/lp
+
+
+EnvironmentNameNotFound: Could not find conda environment: lp
+You can list all discoverable environments with `conda info --envs`.
+
+
+Running optimization stage...
+Best Trial:
+Value: 1056.4261474609375
+Best Parameters:
+num_hidden_layers: 3
+hidden_size_layer_0: 81
+hidden_size_layer_1: 69
+hidden_size_layer_2: 103
+learning_rate: 0.010787803100433029
+
+Optimization stage complete. Running training stage now...
+
+Training stage complete. Running evaluation stage now...
+Test MSE: 1028.958251953125
+Test MAE: 24.04615020751953
+Test R-squared: -0.8602505945318046
+
+Pipeline successfully completed!
